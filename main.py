@@ -16,11 +16,10 @@ shap_values = explainer.shap_values(X_test, nsamples=100)
 
 # print(shap_values)
 
-# plot the SHAP values for the Setosa output of all instances
-# This commented code seems to just save a white image
-# fig = shap.force_plot(explainer.expected_value[0], shap_values[0], X_test, link="logit")
-# plt.savefig('grafic.png')
+plot = shap.force_plot(explainer.expected_value[0], shap_values[0], X_test, link="logit")
+shap.save_html("shap.html", plot)
 
-fig = shap.summary_plot(shap_values, X_train, show=False)
-plt.savefig('shap.png', bbox_inches='tight')
+# shap.summary_plot(shap_values, X_train, show=False)
+# shap.plots.waterfall(shap_values[0])
+# plt.savefig('shap.png', bbox_inches='tight')
 
